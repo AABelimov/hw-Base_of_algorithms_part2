@@ -181,11 +181,20 @@ class IntegerListImplTest {
 
     @Test
     void shouldReturnExceptionWhenIndexOutOfBound() {
-
+        assertThrows(IndexOutOfBoundsException.class, () -> out.add(10, 100));
+        assertThrows(IndexOutOfBoundsException.class, () -> out.set(10, 100));
+        assertThrows(IndexOutOfBoundsException.class, () -> out.remove(10));
+        assertThrows(IndexOutOfBoundsException.class, () -> out.get(10));
     }
 
     @Test
     void shouldReturnExceptionWhenItemIsNull() {
-
+        assertThrows(IllegalArgumentException.class, () -> out.add(null));
+        assertThrows(IllegalArgumentException.class, () -> out.add(1, null));
+        assertThrows(IllegalArgumentException.class, () -> out.set(1, null));
+        assertThrows(IllegalArgumentException.class, () -> out.remove(null));
+        assertThrows(IllegalArgumentException.class, () -> out.contains(null));
+        assertThrows(IllegalArgumentException.class, () -> out.indexOf(null));
+        assertThrows(IllegalArgumentException.class, () -> out.lastIndexOf(null));
     }
 }
